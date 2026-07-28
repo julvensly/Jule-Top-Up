@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
- import axios from "axios";
+ import api from "../services/api";
  function AdminMessages() {
   const [conversations, setConversations] =  useState([]);
  const [messages, setMessages] =   useState([]);
@@ -7,16 +7,15 @@ import { useEffect, useState } from "react";
  const [selectedName, setSelectedName] =   useState("");
  const [reply, setReply] = useState(""); 
   const loadConversations = async () => {
-    try { const res = await axios.get( 
-        "http://localhost:5000/api/messages/conversations"
+    try { const res = await api.get( "/api/messages/conversations"
       ); setConversations(res.data);
     } catch (err) {
       console.log(err);
     }
   };
   const loadMessages = async (userId, nom) => { try { 
-      const res = await axios.get(
-        `http://localhost:5000/api/messages/${userId}` 
+      const res = await api.get(
+        `/api/messages/${userId}` 
       ); setMessages(res.data); setSelectedUser(userId); 
       setSelectedName(nom);
     } catch (err) {
@@ -27,8 +26,8 @@ import { useEffect, useState } from "react";
   }, []);
   const sendReply = async () => { if (!reply.trim() || 
     !selectedUser) return;
-    try { await axios.post( 
-        "http://localhost:5000/api/messages", {
+    try { await api.post( 
+        `/api/messages`, {
           userId: selectedUser, sender: "admin", 
           receiver: "client", text: reply,
         }

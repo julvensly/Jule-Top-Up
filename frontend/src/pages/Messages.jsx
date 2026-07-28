@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
- import axios from "axios";
+ import api from "../services/api";
  function Messages() {
   const [message, setMessage] = useState("");
  const  [messages, setMessages] = useState([]);
  const userId =   localStorage.getItem("userId");
  const loadMessages =   async () => {
     try {
- const res = await axios.get( 
-        `http://localhost:5000/api/messages/${userId}`
-      ); setMessages(res.data);
+ const res = await api.get( `/api/messages/${userId}`
+);
+ setMessages(res.data);
     } catch (error) {
       console.log(error);
     }
@@ -18,12 +18,12 @@ import { useState, useEffect } from "react";
   const envoyerMessage = async (e) => { 
     e.preventDefault(); if (!message.trim()) return; try 
     {
-      await 
-      axios.post("http://localhost:5000/api/messages", {
-        userId, sender: "client", receiver: "admin", 
-        text: message,
-      });
-      setMessage(""); loadMessages();
+      
+
+await api.post("/api/messages", { userId, sender: "client", receiver: 
+  "admin", text: message,
+});
+ setMessage(""); loadMessages();
     } catch (error) {
       console.log(error);
     }

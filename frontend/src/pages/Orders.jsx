@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
- import axios from "axios";
+ import api from "../services/api";
  function Orders() {
   const [orders, setOrders] = useState([]);
  useEffect(()  => {
-    axios.get("http://localhost:5000/api/orders") 
+    api.get("/api/orders") 
       .then((response) => {
         setOrders(response.data);
       })

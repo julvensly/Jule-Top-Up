@@ -1,5 +1,5 @@
 import { useState } from "react";
- import axios from "axios";
+ import api from "../services/api";
  import { useNavigate } from "react-router-dom"; 
 function Inscrit() {
   const [form, setForm] = useState({ nom: "", email: "", 
@@ -21,8 +21,8 @@ function Inscrit() {
   };
   const handleSubmit = async (e) => { 
     e.preventDefault(); try {
-      await axios.post( 
-        "http://localhost:5000/api/users/register", form
+      await api.post( 
+        "/api/users/register", form
       ); alert("Inscription réussie !"); 
       navigate("/connexion");
     } catch (error) {

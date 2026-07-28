@@ -11,10 +11,7 @@ function Compte() {
  <div>
  <h1>Mon Compte</h1> 
       <p>Bienvenue sur votre compte.</p>
- <Link  to="/compte">
-        <button>Compte</button>
- </Link>
- <br /><br />
+
  <Link to="/orders">
         <button>Mes commandes</button>
  </Link> 

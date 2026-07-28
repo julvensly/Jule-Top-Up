@@ -1,8 +1,8 @@
 import { useState, useContext }from "react";
  import { useNavigate } from "react-router-dom";
  import { AuthContext } from "../AuthContext"; 
-import axios from "axios"; function 
-SeConnecter() {
+import api from "../services/api";
+ function SeConnecter() {
   const [email, setEmail] =   useState("");
  const [password, setPassword] = useState("");
  const   [showPassword, setShowPassword] =  useState(false);
@@ -10,8 +10,8 @@ SeConnecter() {
  const { login } =   useContext(AuthContext);
  const   handleSubmit = async (e) => {
     e.preventDefault(); try {
- const  response = await axios.post(
-        "http://localhost:5000/api/users/login", 
+ const  response = await api.post(
+        "/api/users/login", 
         {
           email, password,
         }

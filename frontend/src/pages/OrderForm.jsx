@@ -1,6 +1,7 @@
 import { useState } from "react";
  import { useLocation } from "react-router-dom";
- import axios from "axios"; function OrderForm() {
+ import api from "../services/api";
+ function OrderForm() {
   const location = useLocation();
  const selected = location.state || {};
  const [formData, setFormData] = useState({
@@ -14,8 +15,8 @@ import { useState } from "react";
     });
   };
   const handleSubmit = async (e) => { e.preventDefault(); try {
- const  response = await axios.post(
-        "http://localhost:5000/api/orders", formData ); 
+ const  response = await api.post(
+        "/api/orders", formData ); 
       alert(response.data.message); setFormData({
         name: "", email: "", phone: "", service: "", plan: "", price: 
         "", paymentMethod: "", transactionId: "", playerId: "",
