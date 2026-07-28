@@ -1,0 +1,30 @@
+const mongoose = require("mongoose");
+ const orderSchema = new mongoose.Schema({
+  name: { type: String, required: true,
+  },
+  email: { type: String, required: true,
+  },
+  phone: { type: String, required: true,
+  },
+  service: { type: String, required: true,
+  },
+  plan: { type: String, required: true,
+  },
+  price: { type: Number, required: true,
+  },
+  paymentMethod: { type: String, default: "",
+  },
+  transactionId: { type: String, default: "",
+  },
+  playerId: { type: String, default: "",
+  },
+  profit: { type: Number, default: 0,
+  },
+  status: { type: String, default: "En attente",
+  },
+  paymentStatus: { type: String, default: "En attente",
+  },
+}, {
+  timestamps: true,
+});
+module.exports = mongoose.model("Order", orderSchema);
