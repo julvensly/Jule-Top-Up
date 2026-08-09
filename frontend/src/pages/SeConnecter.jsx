@@ -17,10 +17,13 @@ import api from "../services/api";
         }
       ); const { token, userId, role } 
       = response.data; login(userId, 
-      role, token); if (role === 
-      "admin") {
+      role, token);
+ if (role === "admin") {
         navigate("/compte-admin");
-      } else {
+      } else if (role === "semiadmin") 
+{navigate("/compte-semi-admin");
+}
+ else {
         navigate("/compte");
       }
     } catch (error) {
