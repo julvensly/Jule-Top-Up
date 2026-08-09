@@ -31,10 +31,15 @@ navigate("/connexion");
                 Déconnexion 
               </button>
             </>
- ) 
-) : ( 
+  ) : ( 
 <>
- <Link to="/inscrit">S'inscrire</Link>{" | "}
+<Link to="/compte-semi-admin">👤 semiadmin</Link>{" | "}
+<button onClick={deconnexion}> Deconnexion</button>
+</>
+)
+) : (
+<> 
+<Link to="/inscrit">S'inscrire</Link>{" | "}
             <Link to="/connexion"> connecter</Link>
           </>
  )} 
