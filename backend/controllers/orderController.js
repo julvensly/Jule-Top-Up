@@ -13,7 +13,8 @@ const Order = require("../models/Order");
  playerId,
     } = req.body;
     const order = new Order({
- name,
+userId: req.user.userId, 
+name,
  email,
  phone, 
       service,
@@ -43,7 +44,18 @@ const getOrders = async (req, res) => {
     });
   }
 };
+const getMyOrders = async (req, res) => {
+ try { 
+const orders = await Order.find({userId: req.user.userId,
+    }).sort({ createdAt: -1 });
+res.status(200).json(orders);
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Le serveur a un problème, veuillez réessayer plus tard.", error: error.message,
+    });
+  }
+};
 module.exports = {
- createOrder,
- getOrders,
+createOrder,
+getOrders,
+getMyOrders,
 };

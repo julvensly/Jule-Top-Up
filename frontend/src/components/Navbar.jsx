@@ -8,23 +8,23 @@ function Navbar() {
   };
   return (
  <nav>
- <h2>Jule Top Up</h2>
+ <h2>SMG</h2>
  <div>
  <Link  to="/">Accueil</Link>{" | "}
  {isLoggedIn ? ( role === "admin" ? ( <>
- <Link  to="/compte-admin">👤 Admin</Link>{" | "} 
+ <Link  to="/compte-admin">Admin</Link>{" | "} 
               <button onClick={deconnexion}>
                 Déconnexion </button>
  </>
  ) : role === 
           "semiadmin" ? (
-            <> <Link to="/compte-semi-admin"> 👤  Semiadmin
+            <> <Link to="/compte-semi-admin">Semiadmin
               </Link>{" | "}
  <button onClick={deconnexion}>
                 Déconnexion </button> </>
  ) : (
  <>
- <Link to="/compte">👤 Mon compte</Link>{" | "} 
+ <Link to="/compte">compte</Link>{" | "} 
               <button onClick={deconnexion}>
                 Déconnexion </button>
  </>
@@ -32,7 +32,7 @@ function Navbar() {
  ) : (
  <> 
             <Link to="/inscrit">S'inscrire</Link>{" | "} 
-            <Link to="/connexion">Se connecter</Link>
+            <Link to="/connexion">connecter</Link>
           </>
  )}
  </div>

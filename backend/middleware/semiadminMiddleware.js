@@ -1,4 +1,4 @@
-const adminOnly = (req, res, next) => {
+const semiadminOnly = (req, res, next) => {
  if (!req.user || req.user.role 
  !== "semiadmin") {
     return res.status(403).json({

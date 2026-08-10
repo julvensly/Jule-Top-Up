@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
  function Orders() {
   const [orders, setOrders] = useState([]);
  useEffect(()  => {
-    api.get("/api/orders") 
+    api.get("/api/orders/my-orders") 
       .then((response) => {
         setOrders(response.data);
       })
