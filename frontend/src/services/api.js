@@ -1,5 +1,4 @@
 import axios from "axios";
- const api = axios.create({ baseURL: 
-"https://jule-top-up.onrender.com",  
+ const api = axios.create({ baseURL: "https://jule-top-up.onrender.com",  
 });
 export default api;
