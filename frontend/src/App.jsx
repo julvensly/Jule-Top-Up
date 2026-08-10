@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
  import Navbar from "./components/Navbar";
  import Footer from "./components/Footer";
  import Home from "./pages/Home";
+import SMG from "./pages/SMG";
  import Orders from "./pages/Orders";
  import Contact from "./pages/Contact";
  import OrderForm from "./pages/OrderForm";
@@ -27,7 +28,8 @@ import AdminMessages from "./pages/AdminMessages";
 <Navbar /> 
 <Routes> 
 <Route path="/" element={<Home />} />
- <Route path="/orders"  element={<Orders />} />
+<Route path="/smg" element={<SMG />} /> 
+<Route path="/orders"  element={<Orders />} />
  <Route path="/contact" element={<Contact />} /> 
         <Route path="/order" element={<OrderForm />} />
 <Route path="/freefire" element={<FreeFire />} />
