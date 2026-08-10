@@ -1,14 +1,20 @@
 import { useContext } from "react";
  import { AuthContext } from "../AuthContext";
-import { Link, useNavigate } from "react-router-dom"; 
+import { Link, useNavigate, useLocation } from "react-router-dom"; 
 function Navbar() {
   const { isLoggedIn, role, logout } = useContext(AuthContext);
- const navigate =  useNavigate(); const deconnexion = () => {
-    logout(); navigate("/connexion");
-  };
+ const navigate =  useNavigate();
+const location = useLocation(); 
+const deconnexion = () => { logout(); navigate("/connexion");
+};
+const siteName =
+ location.pathname === "/smg" ||
+location.pathname === "/freefire"
+? "SMG OFICIEL"
+: "JULE community"; 
   return (
  <nav>
- <h2>SMG</h2>
+ <h2>{siteName}</h2>
  <div>
  <Link  to="/">Accueil</Link>{" | "}
  {isLoggedIn ? ( role === "admin" ? ( <>
