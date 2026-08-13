@@ -1,62 +1,72 @@
 import { useState } from "react";
- import { useLocation } from "react-router-dom";
+ import { useLocation, useNavigate } from "react-router-dom";
  import api from "../services/api";
+import { Send, Gamepad2, CreditCard, Hash,} from "lucide-react";
  function OrderForm() {
   const location = useLocation();
+ const navigate =   useNavigate();
  const selected = location.state || {};
- const [formData, setFormData] = useState({
-    name: "", email: "", phone: "", service: selected.service || "", 
-    plan: selected.plan || "", price: selected.price || "", 
-    paymentMethod: "", transactionId: "", playerId: "",
+ const  communityId =
+    selected.communityId || 
+    localStorage.getItem("communityId");
+  const [formData, setFormData] = useState({ service: 
+    selected.service || "",
+ plan: selected.plan || "",
+ price:  selected.price || "",
+ playerId: "",
+ paymentMethod: "", 
+    transactionId: "",
+ communityId: communityId || "",
   });
-  const handleChange = (e) => { const { name, value } = e.target; 
-    setFormData({
-      ...formData, [name]: value,
-    });
+  const handleChange = (e) => {
+ const { name, value } = 
+    e.target; setFormData((prev) => ({ ...prev, [name]: value,
+    }));
   };
-  const handleSubmit = async (e) => { e.preventDefault(); try {
- const  response = await api.post(
-        "/api/orders", formData ); 
-      alert(response.data.message); setFormData({
-        name: "", email: "", phone: "", service: "", plan: "", price: 
-        "", paymentMethod: "", transactionId: "", playerId: "",
-      });
+  const handleSubmit = async (e) => { e.preventDefault();
+ try { 
+      const response = await api.post("/api/orders", formData); 
+      alert(response.data.message); navigate(-1);
     } catch (error) {
-      alert("Erreur lors de l'envoi de la commande."); 
-      console.log(error);
+      console.error(error); alert( 
+        error.response?.data?.message ||
+          "Erreur lors de l'envoi de la commande." );
     }
   };
-  return ( <div> <h1>Faire une commande</h1> <form 
-      onSubmit={handleSubmit}>
-        <input type="text" name="name" placeholder="Nom" 
-          value={formData.name} onChange={handleChange} required
-        /> <br /><br /> <input type="email" name="email" 
-          placeholder="Email" value={formData.email} 
+  return (
+<div>
+ <div className="auth-page">
+ <div className="back-button"> <button onClick={() => navigate(-1)}>‹</button>
+  </div>
+ <div className="auth-card"> <div className="auth-icon"> <Send size={30} />
+    </div>
+ <h1>Faire une commande</h1>
+ <p className="auth-subtitle">  Remplissez les informations de votre commande</p>
+ <form onSubmit={handleSubmit}>
+ <div className="input-group"> 
+        <Gamepad2 size={20} />
+ <input type="text" name="playerId" placeholder="ID du joueur" 
+          value={formData.playerId} onChange={handleChange} required
+        />
+ </div>
+ <div className="input-group"> <CreditCard size={20} 
+        /> <select
+          name="paymentMethod" value={formData.paymentMethod} 
           onChange={handleChange} required
-        /> <br /><br /> <input type="text" name="phone" 
-          placeholder="Téléphone" value={formData.phone} 
-          onChange={handleChange} required
-        /> <br /><br /> <h3> Service : {formData.service} </h3> <h3> 
-          Plan : {formData.plan}
-        </h3> <h3> Prix : {formData.price} </h3> {(formData.service  === "FreeFire" ||
-          formData.service === "PUBG") && ( <> <input type="text" 
-              name="playerId" placeholder="ID du joueur" 
-              value={formData.playerId} onChange={handleChange} 
-              required
-            /> <br /><br /> </> )} <select name="paymentMethod" 
-          value={formData.paymentMethod} onChange={handleChange} 
-          required
         >
           <option value=""> Choisir un mode de paiement </option> 
-          <option value="MonCash">
-            MonCash </option> <option value="NatCash"> NatCash 
-          </option>
-        </select> <br /><br /> <input type="text" name="transactionId" 
-          placeholder="Numéro de transaction" 
-          value={formData.transactionId} onChange={handleChange} 
-          required
-        /> <br /><br /> <button type="submit"> Envoyer la commande 
-        </button>
-      </form> </div> );
+          <option value="MonCash">MonCash</option> <option 
+          value="NatCash">NatCash</option>
+        </select> </div> <div className="input-group"> <Hash size={20} 
+        /> <input
+          type="text" name="transactionId" placeholder="Numéro de 
+          transaction" value={formData.transactionId} 
+          onChange={handleChange} required
+        /> </div> <button type="submit" className="auth-submit"
+      >
+        Envoyer la commande </button> </form> </div>
+</div>
+</div>
+);
 }
 export default OrderForm;

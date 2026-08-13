@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
  import api from "../services/api";
+import { useNavigate } from "react-router-dom";
  function AdminMessages() {
   const [conversations, setConversations] =  useState([]);
  const [messages, setMessages] =   useState([]);
@@ -37,7 +38,13 @@ import { useEffect, useState } from "react";
       console.log(err);
     }
   };
-  return ( <div> <h1>Messages des clients</h1> 
+const navigate = useNavigate();  
+return (
+ <div>
+<div className="back-button"> 
+<button onClick={() => navigate(-1)}>‹</button>
+</div> 
+<h1>Messages des clients</h1> 
       <h2>Clients</h2> {conversations.map((conv) => (
         <div key={conv.userId}> <button onClick={() => 
               loadMessages(conv.userId, conv.nom)
@@ -49,11 +56,8 @@ import { useEffect, useState } from "react";
         <div>
           <h2> Conversation avec {selectedName} </h2> 
           {messages.map((msg) => (
-            <p key={msg._id}> <strong> {msg.sender === 
-                "admin"
-                  ? "Admin"
-                  : selectedName}
-                :
+            <p key={msg._id}> <strong> {msg.sender === "admin" ?
+ "Admin": selectedName}
               </strong>{" "} {msg.text} </p> ))} 
           <textarea
             placeholder="Votre réponse..." value={reply} 

@@ -1,11 +1,16 @@
 #root {
   width: 100%;
- max-width: 700%;
+min-height: 100vh;
  margin: 0; 
-  padding: 1rem;
- text-align: center;
+  padding: 0;
+display: flex;
+flex-direction: column;
 }
-
+.page-content {
+width: 100%;
+min-height: 100vh;
+box-sizing: border-box;
+}
 
 .logo {
   height: 6em;
@@ -56,22 +61,22 @@
  border-radius: 10px;
 }
 nav {
+ background: linear-gradient( 135deg, #8A8F98, #D9DCE1, #6F747C);
  display: flex;
  flex-direction:   column;
  align-items: center;
  padding:   15px 25px;
- background-color: #111;
 }
 nav h2 { 
 margin: 0 0 12px 0;
-color: white;
+color: #111;
 }
 nav div {
  display: flex;
  gap: 15px;
 }
 nav a { 
-color:white;
+color:#111;
  text-decoration: none; 
   font-weight: bold;
 }
@@ -84,13 +89,18 @@ nav a:hover {
  gap: 40px 15px;
 }
 .deux-colonnes {
+background: linear-gradient( 135deg, #8A8F98, #D9DCE1, #6F747C);
  width: 100%;
-height: 180px
-object-fit: cover
+height: 220px;
+object-fit: cover;
 }
 
 .galerie-deux div { 
 text-align: center;
+border: 3px solid black;
+border-radius: 12px;
+padding: 20px;
+box-sizing: border-box;
 }
 .galerie-deux img {
  width: 100%;
@@ -99,11 +109,158 @@ text-align: center;
  margin-bottom: 0px;
 }
 .galerie-deux h3 {
- margin: 2px 0;
+color: #111; 
+margin: 2px 0;
 }
 .galerie-deux p {
+color: #111;
  margin: 1px 0;
 }
-.galerie-deux button {
- margin-top: 2px;
+}
+.back-button {
+ position: absolute;
+ top: 95px;
+ left: 5px;
+ z-index:  1000;
+}
+.back-button button {
+ background: transparent;
+ border: none;
+ color:  white;
+ padding: 0;
+ font-size: 50px;
+ line-height: 1;
+ cursor: pointer;
+}
+footer {
+ background: linear-gradient( 135deg, #8A8F98, #D9DCE1, #6F747C);
+ color: #111;
+ width: 100%;
+margin-top: auto;
+ padding: 8px 10px;
+ box-sizing: border-box;
+ text-align: center;
+}
+footer h3,
+ footer p {
+ margin: 3px 0;
+}
+.partenaires {
+ margin: 3px 0;
+ padding: 0;
+}
+.partenaires h4 {
+ margin: 3px 0;
+}
+.partenaires img {
+ width: 50px;
+ height: 50px;
+ object-fit: contain; 
+  border-radius: 50%;
+}
+.deux-colonnes {
+background: linear-gradient( 135deg, #8A8F98, #D9DCE1, #6F747C);
+ text-align: center;
+}
+.menu-link {
+ width: 100%;
+ height: 100%;
+ min-height: 160px;
+ display: flex; 
+flex-direction:  column;
+ align-items: center;
+ justify-content: center;
+ gap: 8px;
+ color: #111; 
+  text-decoration: none;
+ font-weight: bold;
+ box-sizing: border-box;
+}
+.auth-page {
+ min-height: auto;
+ padding: 20px 15px 30px; 
+  box-sizing: border-box;
+}
+.auth-card {
+ width: 100%;
+ max-width: 430px;
+ margin: 10px auto; 
+  padding: 22px 20px;
+ box-sizing: border-box;
+ border-radius:  18px;
+ background: linear-gradient( 135deg, #8A8F98, #D9DCE1, #6F747C);
+ box-shadow: 0 8px 25px rgba(0, 0,  0, 0.12);
+color: #111;
+}
+.auth-icon {
+ width: 48px;
+ height: 48px;
+ margin: 0 auto 5px; 
+  border-radius: 50%;
+ display: flex;
+ align-items: center; 
+  justify-content: center;
+ background: #f0f2f5;
+color: #111;
+}
+.auth-card h1 {
+ text-align: center;
+ margin: 5px 0;
+color: #111;
+}
+.auth-subtitle {
+ text-align: center;
+ margin-bottom:0 0 12px;
+}
+.input-group {
+ display: flex;
+ align-items: center;
+ gap: 10px; 
+  width: 100%;
+ min-height: 48px;
+ margin-bottom: 10px;
+ padding:  0 14px;
+ box-sizing: border-box;
+ border: 1px solid #ccc; 
+  border-radius: 10px;
+ background: #fff;
+}
+.input-group input {
+ flex: 1;
+ width: 100%;
+ padding: 14px 0; 
+  border: none;
+ outline: none;
+ font-size: 16px;
+ background:  transparent;
+}
+.password-button {
+ border: none;
+ background: transparent; 
+  padding: 5px;
+ display: flex;
+ align-items: center;
+ cursor:   pointer;
+color: #111;
+}
+.password-rules {
+ margin: 5px 0 20px;
+ padding: 12px; 
+  border-radius: 10px;
+ background: #f5f5f5;
+}
+.password-rules p {
+ display: flex;
+ align-items: center;
+ gap:  7px;
+ margin: 7px 0;
+ font-size: 14px;
+}
+.auth-submit {
+ width: 100%;
+ padding: 14px;
+ border: none; 
+  border-radius: 10px;
+ font-size: 16px;
+ cursor: pointer;
 }

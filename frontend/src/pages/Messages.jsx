@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
  import api from "../services/api";
+import { Link, useNavigate } from "react-router-dom";
  function Messages() {
   const [message, setMessage] = useState("");
  const  [messages, setMessages] = useState([]);
@@ -28,9 +29,13 @@ await api.post("/api/messages", { userId, sender: "client", receiver:
       console.log(error);
     }
   };
-  return (
+const navigate = useNavigate();  
+return (
  <div>
- <h1>Messages</h1>
+<div className="back-button">
+<button onClick={() => navigate(-1)}>‹</button>
+</div> 
+<h1>Messages</h1>
  <div> 
         {messages.map((msg) => (
           <p key={msg._id}> <strong> {msg.sender === 

@@ -8,7 +8,7 @@ const location = useLocation();
 const deconnexion = () => { logout(); navigate("/connexion");
 };
 const siteName =
- location.pathname === "/smg" ||
+ location.pathname === "pages/community/SMG/smg" ||
 location.pathname === "/freefire"
 ? "SMG OFICIEL"
 : "JULE community"; 

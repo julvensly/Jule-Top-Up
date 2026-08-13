@@ -8,6 +8,10 @@ const mongoose = require("mongoose");
     },
     role: { type: String, default: "client",
     },
+    balance: { type: Number, default: 0,
+    },
   },
-  { timestamps: true } );
+  { timestamps: true,
+  }
+);
 module.exports = mongoose.model("User", userSchema);

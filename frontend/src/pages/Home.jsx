@@ -5,7 +5,7 @@
  <h1>Bienvenue dans notre communauté</h1> 
  
 <div className="services">
- <Link to="/smg"> <img 
+ <Link to="/community/SMG/SMG"> <img 
 src="/SMG.jpg" 
 alt="SMG"    />
 </Link>
