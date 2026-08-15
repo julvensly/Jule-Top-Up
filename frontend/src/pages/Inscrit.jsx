@@ -10,6 +10,7 @@ function Inscrit() {
   });
   const [showPassword, setShowPassword] = useState(false); 
   const navigate = useNavigate();
+const [loading, setLoading] = useState(false);
  const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value,
     });
@@ -21,7 +22,9 @@ function Inscrit() {
     number: /[0-9]/.test(password), special: 
     /[@#$!%*?&]/.test(password),
   };
-  const handleSubmit = async (e) => { e.preventDefault(); try { 
+  const handleSubmit = async (e) => { e.preventDefault();
+setLoading(true);
+ try { 
       await api.post("/api/users/register", form); 
       alert("Inscription réussie !"); navigate("/connexion");
     } catch (error) {
@@ -29,8 +32,6 @@ function Inscrit() {
       );
     }
   };
- 
-const [loading, setLoading] = useState(false);
  return (
  <div className="auth-page"> <div  className="back-button">
         <button onClick={() => navigate(-1)}>‹</button> </div> 
@@ -95,10 +96,10 @@ required
               {passwordRules.special ? (
                 <Check size={16} /> ) : ( <X size={16} /> )} Un 
               caractère spécial
-            </p> </div> <button type="submit" 
+            </p> </div> <Button type="submit" 
 loading={loading}           
  className="auth-submit"
           >
-            Créer mon compte </button> </form> </div> </div> );
+            Créer mon compte </Button> </form> </div> </div> );
 }
 export default Inscrit;
