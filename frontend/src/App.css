@@ -264,3 +264,11 @@ color: #111;
  font-size: 16px;
  cursor: pointer;
 }
+.global-button {
+ cursor: pointer;
+ transition: 0.2s ease;
+}
+.global-button:disabled {
+ opacity: 0.7;
+ cursor: not-allowed;
+}

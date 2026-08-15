@@ -3,6 +3,7 @@ import { useState } from "react";
  import { useNavigate } from "react-router-dom";
  import { User, Mail, Lock, Eye, EyeOff, Check, X,
 } from "lucide-react";
+import Button from "../components/Button";
 function Inscrit() {
  const [form, setForm] = useState({ nom: 
     "", email: "", password: "",
@@ -28,7 +29,9 @@ function Inscrit() {
       );
     }
   };
-  return (
+ 
+const [loading, setLoading] = useState(false);
+ return (
  <div className="auth-page"> <div  className="back-button">
         <button onClick={() => navigate(-1)}>‹</button> </div> 
       <div className="auth-card">
@@ -93,7 +96,8 @@ required
                 <Check size={16} /> ) : ( <X size={16} /> )} Un 
               caractère spécial
             </p> </div> <button type="submit" 
-            className="auth-submit"
+loading={loading}           
+ className="auth-submit"
           >
             Créer mon compte </button> </form> </div> </div> );
 }
