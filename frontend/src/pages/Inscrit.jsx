@@ -28,7 +28,7 @@ setLoading(true);
       await api.post("/api/users/register", form); 
       alert("Inscription réussie !"); navigate("/connexion");
     } catch (error) {
-      alert( error.response?.data);
+console.log(error.response?.data);
 alert( error.response?.data?.message || error.messages);
     }
   };
