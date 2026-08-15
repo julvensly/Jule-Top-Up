@@ -7,20 +7,22 @@ const registerUser = async (req, res) => {
  const { nom, email, password } = req.body;
  const passwordRegex =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%*?&]).{8,}$/; 
     if (!passwordRegex.test(password)) {
-      return res.status(400).json({ message: "Le mot de passe doit avoir 8 caractères une letre majuscule et mininuscu,un chiffre,et uune caractère special",
+      return res.status(400).json({ message:
+ "Le mot de passe doit avoir 8 caractères une letre majuscule et mininuscu,un chiffre,et uune caractère special",
       });
     }
     const existingUser = await User.findOne({ email }); if 
     (existingUser) {
-      return res.status(400).json({ message: "Vous avez déjà un compte, veuillez vous connecter",
+      return res.status(400).json({ message:
+ "Vous avez déjà un compte, veuillez vous connecter",
       });
     }
     const hashedPassword = await bcrypt.hash(password, 10); 
     const user = await User.create({
       nom, email, password: hashedPassword,
     });
-    res.status(201).json({ message: "Votre compte a été créé 
-      avec succès", user: {
+    res.status(201).json({ message:
+ "Votre compte a été créé avec succès", user: {
         id: user._id, nom: user.nom, email: user.email, role: 
         user.role,
       },
@@ -31,11 +33,12 @@ const registerUser = async (req, res) => {
   }
 };
 // Koneksyon
-const loginUser = async (req, rescaract
+const loginUser = async (req, res) => {
  try {
  const { email, password } = req.body;
  const user = await User.findOne({ email }); if (!user) {
-      return res.status(401).json({ message: "Email ou mot de passe incorrect",
+      return res.status(401).json({ message:
+ "Email ou mot de passe incorrect",
       });
     }
     const passwordCorrect = await bcrypt.compare( password, 
@@ -58,7 +61,7 @@ const loginUser = async (req, rescaract
   }
 };
 // Solde Admin
-const getMyBalance = async (req, reschiffr
+const getMyBalance = async (req, res) => {
  try {
  const user = 
     await User.findById(req.user.userId).select(
