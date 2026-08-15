@@ -63,7 +63,7 @@ autoComplete="email"
               name="password" placeholder="Mot de passe" 
               value={form.password}
  onChange={handleChange} 
-autoComplete="new-password"              
+autoComplete="current-password"              
 required
             /> <button type="button" 
               className="password-button" onClick={() =>
