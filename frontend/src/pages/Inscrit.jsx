@@ -38,19 +38,33 @@ function Inscrit() {
         onSubmit={handleSubmit}>
           <div className="input-group"> <User size={20} /> 
             <input
-              type="text" name="nom" placeholder="Nom complet" 
-              value={form.nom} onChange={handleChange} required
+              type="text"
+              name="nom"
+              placeholder="Nom complet" 
+              value={form.nom}
+ onChange={handleChange}
+autoComplete="name"
+ required
             /> </div> <div className="input-group"> <Mail 
-            size={20} /> <input
-              type="email" name="email" placeholder="Adresse 
-              e-mail" value={form.email} 
-              onChange={handleChange} required
-            /> </div> <div className="input-group"> <Lock 
-            size={20} /> <input
-              type={showPassword ? "text" : "password"} 
+            size={20} />
+ <input
+              type="email"
+ name="email"
+ placeholder="Adresse e-mail"
+ value={form.email} 
+              onChange={handleChange}
+autoComplete="email"
+ required
+            /> </div>
+ <div className="input-group"> <Lock 
+            size={20} />
+ <input
+             type={showPassword ? "text" : "password"} 
               name="password" placeholder="Mot de passe" 
-              value={form.password} onChange={handleChange} 
-              required
+              value={form.password}
+ onChange={handleChange} 
+autoComplete="new-password"              
+required
             /> <button type="button" 
               className="password-button" onClick={() =>
                 setShowPassword(!showPassword)
