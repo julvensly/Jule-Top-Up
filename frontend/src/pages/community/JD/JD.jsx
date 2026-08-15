@@ -1,5 +1,5 @@
 import { Link,useNavigate } from "react-router-dom"; 
-function SMG() {
+function JD() {
 const navigate = useNavigate();
   return (
 <div>
@@ -7,19 +7,18 @@ const navigate = useNavigate();
 <button onClick={() => navigate(-1)}>‹</button>
 </div>
  
-<h1>SMG top-up</h1>
- <h2>Nou proposons des services de qualité rapide et fiable :</h2>
 <div className="services">
- <Link to="/community/SMG/freefire"> 
+ <Link to="/community/JD/freefirejd"> 
      <img src="/freefire.png"
 alt="FreeFire Diamond"    />
       </Link>
-<Link to="/pubg"> <img src="/pubg.png"
+</div>
+<div className="services">
+<Link to="/community/JD/pubgjd"> <img src="/pubg.png"
 alt="PUBG UC"    />
 </Link>
-
-</div>
-</div>
+ </div>
+</div> 
 );
 }
-export default SMG;
+export default JD;

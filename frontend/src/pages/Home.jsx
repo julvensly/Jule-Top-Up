@@ -2,8 +2,7 @@
  function Home() {
   return (
  <div>
- <h1>Bienvenue dans notre communauté</h1> 
- 
+<h2> Bienvenue chez JULE </h2> 
 <div className="services">
  <Link to="/community/SMG/SMG"> <img 
 src="/SMG.jpg" 
