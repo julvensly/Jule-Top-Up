@@ -29,7 +29,7 @@ setLoading(true);
       alert("Inscription réussie !"); navigate("/connexion");
     } catch (error) {
 console.log(error.response?.data);
-alert( error.response?.data?.message || error.messages);
+alert(JSON.stringify(error.response?.data));
     }
   };
  return (
