@@ -1,16 +1,36 @@
 const express = require("express");
  const router = express.Router();
- const { createOrder, getOrders, getMyOrders, validateOrder,
+ const {
+  createOrder,
+ getOrders,
+ getMyOrders,
+ validateOrder, 
+  exchangeCommunity,
 } = require("../controllers/orderController");
-const { protect } = require("../middleware/authMiddleware"); 
-const { adminOnly } = require("../middleware/adminMiddleware");
-// Client kreye commande
-router.post("/", protect, createOrder);
-// Admin wè tout commandes
-router.get("/", protect, adminOnly, getOrders);
-// Client wè pwòp commandes li
-router.get("/my-orders", protect, getMyOrders);
-// Admin valide une commande
-router.put( "/:id/validate", protect, adminOnly, validateOrder 
+const { protect } = require("../middleware/authMiddleware");
+ const { adminOnly } = require("../middleware/adminMiddleware");
+// Créer commande
+router.post("/",
+ protect,
+ createOrder);
+// Admin wè commandes yo
+router.get( "/",
+ protect,
+ adminOnly,
+ getOrders );
+// Utilisateur wè pwòp commandes li
+router.get( "/my-orders",
+ protect,
+ getMyOrders );
+// Admin valide commande
+router.patch( "/:id/validate",
+ protect,
+ adminOnly, 
+  validateOrder
+);
+// Responsable Community fè échange
+router.post( "/community-exchange",
+ protect, 
+  exchangeCommunity
 );
 module.exports = router;
