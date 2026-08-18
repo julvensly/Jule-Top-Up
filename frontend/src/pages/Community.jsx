@@ -50,7 +50,7 @@ import { useState } from "react";
         <p className="auth-subtitle">
           Entrez l'identifiant de votre Community </p> 
         {/* SEARCH BAR */}
- <div className="input-bar">
+ <div className="input-group">
           <Search size={20} />
  <input type="text" 
         placeholder="Community ID" 
@@ -64,7 +64,8 @@ import { useState } from "react";
               }
             }}
           />
- </div> {/* SEARCH BUTTON */}
+ </div>
+ {/* SEARCH BUTTON */}
  <button type="button" className="auth-submit" onClick={rechercherCommunity} 
           disabled={loading}
         >
