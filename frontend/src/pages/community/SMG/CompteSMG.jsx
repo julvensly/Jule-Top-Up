@@ -16,8 +16,7 @@ import api from "../../../services/api";
  const [erreur,  setErreur] = useState(""); useEffect(() => {
     const communityId = 
     localStorage.getItem("communityId");
- if 
-    (!communityId) {
+ if (!communityId) {
       setErreur("Aucune Community sélectionnée."); 
       setLoading(false); return;
     }
