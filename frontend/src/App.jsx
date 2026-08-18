@@ -22,6 +22,11 @@ import ChatBox from "./pages/ChatBox";
 import AdminMessages from "./pages/AdminMessages";
 import Community from "./pages/Community"; 
 
+import compteSMG from "./pages/community/SMG/compteSMG";
+import SoldeSMG from "./pages/community/SMG/SoldeSMG";
+import CommandesSMG from "./pages/community/SMG/CommandesSMG";
+
+
 function App() {
   return (
  <BrowserRouter> 
@@ -45,10 +50,9 @@ function App() {
 <Route path="/utilisateurs" element={<Utilisateurs />} />
 <Route path="/chatbox" element={<ChatBox />} />
 <Route path="/community" element={<Community />} />
-
-
-
-
+<Route path="/community/SMG/comptesmg" element={<compteSMG />} />
+<Route path="/community/SMG/soldesmg" element={<SoldeSMG />} />
+<Route path="/community/SMG/commandessmg" element={<CommandesSMG />} />
 
 
 
