@@ -22,7 +22,7 @@ import ChatBox from "./pages/ChatBox";
 import AdminMessages from "./pages/AdminMessages";
 import Community from "./pages/Community"; 
 
-import compteSMG from "./pages/community/SMG/CompteSMG";
+import CompteSMG from "./pages/community/SMG/CompteSMG";
 import SoldeSMG from "./pages/community/SMG/SoldeSMG";
 import CommandesSMG from "./pages/community/SMG/CommandesSMG";
 
